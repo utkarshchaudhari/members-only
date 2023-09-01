@@ -1,4 +1,9 @@
+import { useState } from 'react';
+import SignupModal from './ui/SignupModal';
+
 function Header() {
+  const [signupModal, setSignupModal] = useState(false);
+
   return (
     <header>
       <div className="header_container">
@@ -7,9 +12,15 @@ function Header() {
         </h1>
         <div className="header_buttons">
           <button className="button">Log In</button>
-          <button className="button sign-up_btn">Sign Up</button>
+          <button
+            className="button sign-up_btn"
+            onClick={() => setSignupModal(!signupModal)}
+          >
+            Sign Up
+          </button>
         </div>
       </div>
+      {signupModal && <SignupModal setSignupModal={setSignupModal} />}
     </header>
   );
 }

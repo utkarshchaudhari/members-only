@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -34,7 +34,7 @@ h1 {
   cursor: pointer;
   background-color: #6366f1;
   color: #ffffff;
-  padding: 10px 16px;
+  padding: 8px 16px;
   border: none;
   border-radius: 5px;
   font-size: 0.875rem;
@@ -48,4 +48,70 @@ h1 {
 
 .sign-up_btn {
   margin-left: 16px;
+}
+
+.modal_close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.modal_close > svg {
+  cursor: pointer;
+}
+
+.modal_form,
+.form_divs {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_form {
+  gap: 24px;
+  color: #374151;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.form_divs {
+  gap: 4px;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+input:focus {
+  outline-color: #2563eb;
+}
+
+/** Modal **/
+
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 10;
+  padding: 36px 40px;
+  border-radius: 5px;
+  width: 448px;
 }
