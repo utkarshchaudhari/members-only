@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import SignupModal from './ui/SignupModal';
+import LoginModal from './ui/LoginModal';
 
 function Header() {
   const [signupModal, setSignupModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
   return (
     <header>
@@ -11,7 +13,9 @@ function Header() {
           <span className="indigo">Members</span>Only
         </h1>
         <div className="header_buttons">
-          <button className="button">Log In</button>
+          <button className="button" onClick={() => setLoginModal(!loginModal)}>
+            Log In
+          </button>
           <button
             className="button sign-up_btn"
             onClick={() => setSignupModal(!signupModal)}
@@ -20,6 +24,7 @@ function Header() {
           </button>
         </div>
       </div>
+      {loginModal && <LoginModal setLoginModal={setLoginModal} />}
       {signupModal && <SignupModal setSignupModal={setSignupModal} />}
     </header>
   );
