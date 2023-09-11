@@ -1,6 +1,38 @@
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 function SignupModal({ setSignupModal }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    cpassword: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3000/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        console.log(await response.json());
+      } else {
+        console.log(response);
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
   return ReactDOM.createPortal(
     <>
       <div className="modal_overlay" onClick={() => setSignupModal(false)} />
@@ -15,22 +47,47 @@ function SignupModal({ setSignupModal }) {
             <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
           </svg>
         </div>
-        <form className="modal_form">
+        <form className="modal_form" onSubmit={handleSubmit}>
           <div className="form_divs">
-            <label>Name</label>
-            <input type="text" autoFocus />
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              autoFocus
+            />
           </div>
           <div className="form_divs">
-            <label>Email address</label>
-            <input type="email" />
+            <label htmlFor="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
           <div className="form_divs">
-            <label>Password</label>
-            <input type="password" />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
           </div>
           <div className="form_divs">
-            <label>Confirm Password</label>
-            <input type="password" />
+            <label htmlFor="cpassword">Confirm Password</label>
+            <input
+              type="password"
+              id="cpassword"
+              name="cpassword"
+              value={formData.cpassword}
+              onChange={handleChange}
+            />
           </div>
           <input type="submit" value="Sign Up" className="button" />
         </form>
