@@ -31,9 +31,7 @@ exports.user_create_post = [
     });
 
     if (!errors.isEmpty()) {
-      res
-        .status(422)
-        .json({ user: user, error: errors.array({ onlyFirstError: true }) });
+      res.status(422).json({ user: user, error: errors.mapped() });
       return;
     } else {
       await user.save();

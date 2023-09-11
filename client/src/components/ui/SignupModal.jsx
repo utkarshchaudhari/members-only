@@ -9,6 +9,8 @@ function SignupModal({ setSignupModal }) {
     cpassword: '',
   });
 
+  const [userError, setUserError] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
@@ -24,7 +26,8 @@ function SignupModal({ setSignupModal }) {
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
-        console.log(await response.json());
+        const serverResponse = await response.json();
+        setUserError(serverResponse);
       } else {
         console.log(response);
       }
@@ -58,6 +61,9 @@ function SignupModal({ setSignupModal }) {
               onChange={handleChange}
               autoFocus
             />
+            {userError && userError.error.name && (
+              <p className="red_text">{userError.error.name.msg}</p>
+            )}
           </div>
           <div className="form_divs">
             <label htmlFor="email">Email address</label>
@@ -68,6 +74,9 @@ function SignupModal({ setSignupModal }) {
               value={formData.email}
               onChange={handleChange}
             />
+            {userError && userError.error.email && (
+              <p className="red_text">{userError.error.email.msg}</p>
+            )}
           </div>
           <div className="form_divs">
             <label htmlFor="password">Password</label>
@@ -78,6 +87,9 @@ function SignupModal({ setSignupModal }) {
               value={formData.password}
               onChange={handleChange}
             />
+            {userError && userError.error.password && (
+              <p className="red_text">{userError.error.password.msg}</p>
+            )}
           </div>
           <div className="form_divs">
             <label htmlFor="cpassword">Confirm Password</label>

@@ -93,6 +93,11 @@ input:focus {
   outline-color: #2563eb;
 }
 
+.red_text {
+  color: #ef4444;
+  font-size: 0.75rem;
+}
+
 /** Modal **/
 
 .modal_overlay {
