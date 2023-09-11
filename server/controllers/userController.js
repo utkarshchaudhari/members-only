@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 
 //Handle User create on POST
 exports.user_create_post = [
@@ -24,10 +25,12 @@ exports.user_create_post = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     console.log(errors);
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
+
     const user = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: hashPassword,
     });
 
     if (!errors.isEmpty()) {
