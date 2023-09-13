@@ -100,6 +100,9 @@ function SignupModal({ setSignupModal }) {
               value={formData.cpassword}
               onChange={handleChange}
             />
+            {userError && userError.error.cpassword && (
+              <p className="red_text">{userError.error.cpassword.msg}</p>
+            )}
           </div>
           <input type="submit" value="Sign Up" className="button" />
         </form>
