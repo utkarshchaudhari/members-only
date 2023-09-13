@@ -22,6 +22,18 @@ exports.user_create_post = [
     .withMessage(
       'Must Contain 8 Characters, 1 Uppercase, 1 Lowercase, 1 Number and 1 Special Case Character.'
     ),
+  body('cpassword')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .withMessage('Password confirmation is required.')
+    .custom((value, { req }) => {
+      if (value !== req.body.password) {
+        throw new Error('Passwords must match.');
+      } else {
+        return true;
+      }
+    }),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     console.log(errors);
