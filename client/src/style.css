@@ -98,14 +98,16 @@ input:focus {
   font-size: 0.75rem;
 }
 
-.successScreen__container {
+.successScreen__container,
+.errorScreen__container {
   text-align: center;
   font-size: 1.25rem;
   font-weight: 700;
   color: #374151;
 }
 
-.successScreen__message {
+.successScreen__message,
+.errorScreen__message {
   margin: 20px 0;
 }
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Spinner from './Spinner';
 import SuccessScreen from './SuccessScreen';
+import ErrorScreen from './ErrorScreen';
 
 function SignupModal({ setSignupModal }) {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ function SignupModal({ setSignupModal }) {
   const [userError, setUserError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [signupSuccess, setSignupSuccess] = useState(false);
+  const [signupError, setSignupError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +40,7 @@ function SignupModal({ setSignupModal }) {
         setIsLoading(false);
       }
     } catch (error) {
-      console.log('Error:', error);
+      setSignupError(true);
       setIsLoading(false);
     }
   };
@@ -52,6 +54,11 @@ function SignupModal({ setSignupModal }) {
         ) : signupSuccess ? (
           <SuccessScreen
             message="Signed Up Successfully!"
+            closeModal={() => setSignupModal(false)}
+          />
+        ) : signupError ? (
+          <ErrorScreen
+            message="Server Error, Try Again!"
             closeModal={() => setSignupModal(false)}
           />
         ) : (
