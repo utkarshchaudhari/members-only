@@ -7,7 +7,7 @@ function ErrorScreen({ message, closeModal }) {
       <FontAwesomeIcon
         icon={faCircleXmark}
         size="2xl"
-        style={{ color: '#6366f1' }}
+        style={{ color: '#ef4444' }}
       />
       <p className="errorScreen__message">{message}</p>
       <button className="button" onClick={closeModal}>
