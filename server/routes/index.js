@@ -12,4 +12,7 @@ router.get('/', function (req, res, next) {
 //POST request for creating user
 router.post('/signup', user_controller.user_create_post);
 
+//POST reqyest for log-in
+router.post('/login', user_controller.user_login_post);
+
 module.exports = router;
