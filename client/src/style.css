@@ -46,8 +46,17 @@ h1 {
   background-color: #4f46e5;
 }
 
-.sign-up_btn {
+.btn_margin-left {
   margin-left: 16px;
+}
+
+.account_btn {
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #111827;
 }
 
 .modal_close {
