@@ -3,10 +3,12 @@ import SignupModal from './ui/SignupModal';
 import LoginModal from './ui/LoginModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import NewMessageModal from './ui/NewMessageModal';
 
 function Header() {
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [newMessageModal, setNewMessageModal] = useState(false);
   const [user, setUser] = useState(null);
 
   return (
@@ -19,7 +21,12 @@ function Header() {
           {user ? (
             <>
               <button className="button">Join Club</button>
-              <button className="button btn_margin-left">New Message</button>
+              <button
+                className="button btn_margin-left"
+                onClick={() => setNewMessageModal(true)}
+              >
+                New Message
+              </button>
               <button className="account_btn btn_margin-left">
                 Account
                 <FontAwesomeIcon
@@ -55,6 +62,9 @@ function Header() {
         />
       )}
       {signupModal && <SignupModal setSignupModal={setSignupModal} />}
+      {newMessageModal && (
+        <NewMessageModal setNewMessageModal={setNewMessageModal} />
+      )}
     </header>
   );
 }
