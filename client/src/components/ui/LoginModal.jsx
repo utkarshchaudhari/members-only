@@ -27,6 +27,7 @@ function LoginModal({ setLoginModal, user, setUser }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
       const serverResponse = await response.json();
       console.log(response, serverResponse);
