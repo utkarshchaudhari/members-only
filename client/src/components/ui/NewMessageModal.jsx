@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 function NewMessageModal({ setNewMessageModal }) {
   const [formData, setFormData] = useState({ title: '', message: '' });
+  const [userError, setUserError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +21,9 @@ function NewMessageModal({ setNewMessageModal }) {
     });
     const serverResponse = await response.json();
     console.log(response, serverResponse);
+    if (response.status === 422 || response.status === 401) {
+      setUserError(serverResponse);
+    }
   };
 
   return ReactDOM.createPortal(
@@ -51,6 +55,9 @@ function NewMessageModal({ setNewMessageModal }) {
               placeholder="Title of your message..."
               autoFocus
             />
+            {userError && userError.error.title && (
+              <p className="red_text">{userError.error.title.msg}</p>
+            )}
           </div>
           <div className="form_divs">
             <label htmlFor="message">Message</label>
@@ -63,6 +70,9 @@ function NewMessageModal({ setNewMessageModal }) {
               rows="5"
               cols="30"
             ></textarea>
+            {userError && userError.error.message && (
+              <p className="red_text">{userError.error.message.msg}</p>
+            )}
           </div>
           <input type="submit" value="Submit" className="button" />
         </form>
