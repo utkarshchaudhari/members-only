@@ -22,10 +22,13 @@ exports.new_message_post = [
     });
 
     if (req.isAuthenticated()) {
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ error: errors.mapped() });
+      }
       await message.save();
       return res.status(200).json({ message: 'New Message Posted!' });
-    } else if (!errors.isEmpty()) {
-      return res.status(422).json({ error: errors.mapped() });
+    } else {
+      return res.status(401).json({ err: 'Authentication Failed, Try Again!' });
     }
   }),
 ];
