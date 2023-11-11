@@ -32,3 +32,9 @@ exports.new_message_post = [
     }
   }),
 ];
+
+//Get all messages from the database
+exports.all_messages_get = asyncHandler(async (req, res, next) => {
+  const allMessages = await Message.find({}).sort({ date: -1 }).exec();
+  res.send(allMessages);
+});
