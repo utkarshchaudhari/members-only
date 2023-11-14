@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import Message from './ui/Message';
 import Spinner from './ui/Spinner';
+import Pagination from './ui/Pagination';
 
 function Messages() {
   const [messages, setMessages] = useState(null);
+  const [page, setPage] = useState(1);
+  const pageSize = 3;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,13 +28,21 @@ function Messages() {
         </div>
         <div className="all_messages">
           {messages ? (
-            messages.map((message) => (
-              <Message message={message} key={message._id} />
-            ))
+            messages
+              .slice(page * pageSize - pageSize, page * pageSize)
+              .map((message) => <Message message={message} key={message._id} />)
           ) : (
             <Spinner />
           )}
         </div>
+        {messages && (
+          <Pagination
+            page={page}
+            setPage={setPage}
+            totalCount={messages.length}
+            pageSize={pageSize}
+          />
+        )}
       </main>
     </>
   );

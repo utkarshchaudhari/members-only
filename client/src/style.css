@@ -230,3 +230,46 @@ textarea:focus {
   color: #374151;
   font-weight: 500;
 }
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  padding: 16px 24px;
+}
+
+.pagination > span {
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+}
+
+.pagination > span:hover {
+  background-color: #f9fafb;
+}
+
+.pagination__arrow-left {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.pagination__arrow-right {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+span.pagination__selected {
+  color: #4f46e5;
+  background-color: #eef2ff;
+  border-color: #6365f1;
+  pointer-events: none;
+}
+
+.pagination__disabled {
+  display: none;
+}
