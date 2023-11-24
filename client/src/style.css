@@ -273,3 +273,57 @@ span.pagination__selected {
 .pagination__disabled {
   display: none;
 }
+
+.account__modal {
+  position: absolute;
+  top: 58px;
+  width: 14rem;
+  right: 0;
+  z-index: 10;
+  margin-right: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.user__details,
+.user__membership {
+  padding: 8px 12px;
+}
+
+.border__bottom {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.text__gray {
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.user__details-email {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.font__medium {
+  font-weight: 500;
+}
+
+.button__wrapper {
+  padding: 12px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
