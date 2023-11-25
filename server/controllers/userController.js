@@ -56,6 +56,7 @@ exports.user_create_post = [
   }),
 ];
 
+//Handle User login on POST
 exports.user_login_post = [
   body('email')
     .trim()
@@ -84,14 +85,28 @@ exports.user_login_post = [
       if (!user) {
         return res.status(401).json({ err: 'Incorrect email or password.' });
       }
-
       req.login(user, (err) => {
         if (err) {
           return next(err);
         }
-
-        return res.json({ message: 'Logged In Successfully!', user });
+        return res
+          .status(200)
+          .json({ message: 'Logged In Successfully!', user });
       });
     })(req, res, next);
   },
 ];
+
+//Handle User logout on DELETE
+exports.user_logout_post = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.status(200).json({ message: 'Logged Out Successfully!' });
+    });
+  } else {
+    return res.status(401).json({ message: 'Not authenticated' });
+  }
+};

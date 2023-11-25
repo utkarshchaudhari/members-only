@@ -1,4 +1,17 @@
-function AccountModal({ user }) {
+function AccountModal({ user, setUser }) {
+  const logOut = async () => {
+    const response = await fetch('http://localhost:3000/logout', {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+
+    if (response.ok) {
+      setUser(null);
+    } else {
+      alert('Server Error, Try Again!');
+    }
+  };
+
   return (
     <>
       <div className="account__modal">
@@ -16,7 +29,9 @@ function AccountModal({ user }) {
           </div>
         </div>
         <div className="button__wrapper">
-          <button className="button">Log Out</button>
+          <button className="button" onClick={logOut}>
+            Log Out
+          </button>
         </div>
       </div>
     </>

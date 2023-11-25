@@ -44,7 +44,11 @@ function Header() {
                 />
               </button>
               {accountModal && (
-                <AccountModal user={user} setAccountModal={setAccountModal} />
+                <AccountModal
+                  user={user}
+                  setUser={setUser}
+                  setAccountModal={setAccountModal}
+                />
               )}
             </>
           ) : (
