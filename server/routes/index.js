@@ -17,7 +17,7 @@ router.post('/signup', user_controller.user_create_post);
 router.post('/login', user_controller.user_login_post);
 
 //DELETE request for log-out
-router.delete('/logout', user_controller.user_logout_post);
+router.delete('/logout', user_controller.user_logout_delete);
 
 //POST request for new message
 router.post('/newmessage', message_controller.new_message_post);

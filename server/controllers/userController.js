@@ -98,7 +98,7 @@ exports.user_login_post = [
 ];
 
 //Handle User logout on DELETE
-exports.user_logout_post = (req, res, next) => {
+exports.user_logout_delete = (req, res, next) => {
   if (req.isAuthenticated()) {
     req.logout((err) => {
       if (err) {
