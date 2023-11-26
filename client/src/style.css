@@ -327,3 +327,10 @@ span.pagination__selected {
 .capitalize {
   text-transform: capitalize;
 }
+
+.secret__label {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
