@@ -27,9 +27,14 @@ function Header() {
         <div className="header_buttons">
           {user ? (
             <>
-              <button className="button" onClick={() => setJoinClubModal(true)}>
-                Join Club
-              </button>
+              {!user.user.member && (
+                <button
+                  className="button"
+                  onClick={() => setJoinClubModal(true)}
+                >
+                  Join Club
+                </button>
+              )}
               <button
                 className="button btn_margin-left"
                 onClick={() => setNewMessageModal(true)}
