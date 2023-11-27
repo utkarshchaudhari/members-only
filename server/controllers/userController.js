@@ -3,6 +3,8 @@ const { body, validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const dotenv = require('dotenv');
+dotenv.config();
 
 //Handle User create on POST
 exports.user_create_post = [
@@ -110,3 +112,17 @@ exports.user_logout_delete = (req, res, next) => {
     return res.status(401).json({ message: 'Not authenticated' });
   }
 };
+
+//Handle User Join the club on POST
+exports.user_join_club_post = asyncHandler(async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    if (req.body.secretCode === process.env.SECRET_CODE) {
+      await User.findByIdAndUpdate(req.user._id, { member: true });
+      return res.status(200).json({ message: 'Welcome To The Club!' });
+    } else {
+      return res.status(422).json({ err: 'Invalid Secret, Try Again!' });
+    }
+  } else {
+    return res.status(401).json({ err: 'Authentication Failed, Try Again!' });
+  }
+});
