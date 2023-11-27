@@ -25,7 +25,9 @@ function AccountModal({ user, setUser }) {
         <div className="border__bottom">
           <div className="user__membership">
             <p className="text__gray">Membership status</p>
-            <p className="font__medium">Member</p>
+            <p className="font__medium">
+              {user.user.member ? 'Member' : 'Not A Member'}
+            </p>
           </div>
         </div>
         <div className="button__wrapper">
