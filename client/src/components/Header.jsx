@@ -7,13 +7,12 @@ import NewMessageModal from './ui/NewMessageModal';
 import AccountModal from './ui/AccountModal';
 import JoinClubModal from './ui/JoinClubModal';
 
-function Header() {
+function Header({ user, setUser }) {
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [newMessageModal, setNewMessageModal] = useState(false);
   const [accountModal, setAccountModal] = useState(false);
   const [joinClubModal, setJoinClubModal] = useState(false);
-  const [user, setUser] = useState(null);
 
   return (
     <header>

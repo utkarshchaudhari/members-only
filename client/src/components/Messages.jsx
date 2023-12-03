@@ -3,7 +3,7 @@ import Message from './ui/Message';
 import Spinner from './ui/Spinner';
 import Pagination from './ui/Pagination';
 
-function Messages() {
+function Messages({ member }) {
   const [messages, setMessages] = useState(null);
   const [page, setPage] = useState(1);
   const pageSize = 3;
@@ -30,7 +30,9 @@ function Messages() {
           {messages ? (
             messages
               .slice(page * pageSize - pageSize, page * pageSize)
-              .map((message) => <Message message={message} key={message._id} />)
+              .map((message) => (
+                <Message message={message} key={message._id} member={member} />
+              ))
           ) : (
             <Spinner />
           )}

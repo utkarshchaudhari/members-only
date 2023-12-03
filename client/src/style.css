@@ -231,6 +231,18 @@ textarea:focus {
   font-weight: 500;
 }
 
+.club_members > p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.member_name {
+  color: #1f2937;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
 /* Pagination */
 
 .pagination {
