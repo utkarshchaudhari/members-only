@@ -216,6 +216,7 @@ textarea:focus {
 .message_detail {
   padding-top: 16px;
   color: #111827;
+  overflow-wrap: break-word;
 }
 
 .message_note {
