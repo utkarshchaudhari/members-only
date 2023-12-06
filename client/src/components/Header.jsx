@@ -94,7 +94,9 @@ function Header({ user, setUser }) {
       {newMessageModal && (
         <NewMessageModal setNewMessageModal={setNewMessageModal} />
       )}
-      {joinClubModal && <JoinClubModal setJoinClubModal={setJoinClubModal} />}
+      {joinClubModal && (
+        <JoinClubModal setJoinClubModal={setJoinClubModal} setUser={setUser} />
+      )}
     </header>
   );
 }

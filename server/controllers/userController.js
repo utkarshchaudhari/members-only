@@ -133,7 +133,8 @@ exports.user_join_club_post = asyncHandler(async (req, res, next) => {
   if (req.isAuthenticated()) {
     if (req.body.secretCode === process.env.SECRET_CODE) {
       await User.findByIdAndUpdate(req.user._id, { member: true });
-      return res.status(200).json({ message: 'Welcome To The Club!' });
+      const user = await User.findById(req.user._id);
+      return res.status(200).json({ message: 'Welcome To The Club!', user });
     } else {
       return res.status(422).json({ err: 'Invalid Secret, Try Again!' });
     }

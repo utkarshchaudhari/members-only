@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 import ErrorScreen from './ErrorScreen';
 import SuccessScreen from './SuccessScreen';
 
-function JoinClubModal({ setJoinClubModal }) {
+function JoinClubModal({ setJoinClubModal, setUser }) {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -21,6 +21,7 @@ function JoinClubModal({ setJoinClubModal }) {
       });
       const serverResponse = await response.json();
       if (response.ok) {
+        setUser(serverResponse);
         setSuccess(serverResponse.message);
         setIsLoading(false);
       } else {
