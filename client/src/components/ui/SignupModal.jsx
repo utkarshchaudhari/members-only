@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 import SuccessScreen from './SuccessScreen';
 import ErrorScreen from './ErrorScreen';
 
-function SignupModal({ setSignupModal }) {
+function SignupModal({ setSignupModal, user, setUser }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,7 +13,6 @@ function SignupModal({ setSignupModal }) {
   });
   const [userError, setUserError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [signupSuccess, setSignupSuccess] = useState(false);
   const [signupError, setSignupError] = useState(false);
 
   const handleChange = (e) => {
@@ -30,12 +29,13 @@ function SignupModal({ setSignupModal }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
+        credentials: 'include',
       });
+      const serverResponse = await response.json();
       if (response.ok) {
+        setUser(serverResponse);
         setIsLoading(false);
-        setSignupSuccess(true);
       } else {
-        const serverResponse = await response.json();
         setUserError(serverResponse);
         setIsLoading(false);
       }
@@ -51,7 +51,7 @@ function SignupModal({ setSignupModal }) {
       <div className="modal_container">
         {isLoading ? (
           <Spinner />
-        ) : signupSuccess ? (
+        ) : user ? (
           <SuccessScreen
             message="Signed Up Successfully!"
             closeModal={() => setSignupModal(false)}

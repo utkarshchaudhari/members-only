@@ -84,7 +84,13 @@ function Header({ user, setUser }) {
           setUser={setUser}
         />
       )}
-      {signupModal && <SignupModal setSignupModal={setSignupModal} />}
+      {signupModal && (
+        <SignupModal
+          setSignupModal={setSignupModal}
+          user={user}
+          setUser={setUser}
+        />
+      )}
       {newMessageModal && (
         <NewMessageModal setNewMessageModal={setNewMessageModal} />
       )}
