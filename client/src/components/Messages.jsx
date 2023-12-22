@@ -3,7 +3,7 @@ import Message from './ui/Message';
 import Spinner from './ui/Spinner';
 import Pagination from './ui/Pagination';
 
-function Messages({ member }) {
+function Messages({ member, refreshMessages }) {
   const [messages, setMessages] = useState(null);
   const [page, setPage] = useState(1);
   const pageSize = 3;
@@ -18,7 +18,7 @@ function Messages({ member }) {
       }
     };
     fetchData().catch(console.error);
-  }, []);
+  }, [refreshMessages]);
 
   return (
     <>

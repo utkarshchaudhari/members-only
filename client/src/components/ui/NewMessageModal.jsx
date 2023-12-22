@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 import SuccessScreen from './SuccessScreen';
 import ErrorScreen from './ErrorScreen';
 
-function NewMessageModal({ setNewMessageModal }) {
+function NewMessageModal({ setNewMessageModal, setRefreshMessages }) {
   const [formData, setFormData] = useState({ title: '', message: '' });
   const [userError, setUserError] = useState(false);
   const [serverError, setServerError] = useState(false);
@@ -31,6 +31,7 @@ function NewMessageModal({ setNewMessageModal }) {
       console.log(response, serverResponse);
       if (response.ok) {
         setSuccess(serverResponse);
+        setRefreshMessages(serverResponse);
         setIsLoading(false);
       } else if (response.status === 422 || response.status === 401) {
         setUserError(serverResponse);

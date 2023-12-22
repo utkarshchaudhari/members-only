@@ -7,7 +7,7 @@ import NewMessageModal from './ui/NewMessageModal';
 import AccountModal from './ui/AccountModal';
 import JoinClubModal from './ui/JoinClubModal';
 
-function Header({ user, setUser }) {
+function Header({ user, setUser, setRefreshMessages }) {
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [newMessageModal, setNewMessageModal] = useState(false);
@@ -92,7 +92,10 @@ function Header({ user, setUser }) {
         />
       )}
       {newMessageModal && (
-        <NewMessageModal setNewMessageModal={setNewMessageModal} />
+        <NewMessageModal
+          setNewMessageModal={setNewMessageModal}
+          setRefreshMessages={setRefreshMessages}
+        />
       )}
       {joinClubModal && (
         <JoinClubModal setJoinClubModal={setJoinClubModal} setUser={setUser} />
