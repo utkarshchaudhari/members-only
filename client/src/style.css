@@ -6,6 +6,14 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body {
+  min-height: 100vh;
+}
+
+main {
+  min-height: 80vh;
+}
+
 header,
 .message_container {
   border: 1px solid #e5e7eb;
@@ -346,4 +354,21 @@ span.pagination__selected {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 24px;
+}
+
+.footer__details {
+  text-align: center;
+  padding: 32px 0;
+  color: #374151;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer__github {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer__github:hover {
+  text-decoration: underline;
 }

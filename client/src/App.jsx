@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Messages from './components/Messages';
 import Header from './components/Header';
 import './style.css';
+import Footer from './components/Footer';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,6 +19,7 @@ function App() {
         member={user && user.user.member}
         refreshMessages={refreshMessages}
       />
+      <Footer />
     </>
   );
 }
