@@ -148,3 +148,13 @@ exports.user_join_club_post = asyncHandler(async (req, res, next) => {
     return res.status(401).json({ err: 'Authentication Failed, Try Again!' });
   }
 });
+
+//check User Authentication on GET
+exports.user_check_auth = (req, res) => {
+  if (req.isAuthenticated()) {
+    const user = req.user;
+    return res.status(200).json({ message: 'Authentication Succeed!', user });
+  } else {
+    return res.status(401).json({ err: 'Authentication Failed!' });
+  }
+};

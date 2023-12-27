@@ -30,7 +30,6 @@ function LoginModal({ setLoginModal, user, setUser }) {
         credentials: 'include',
       });
       const serverResponse = await response.json();
-      console.log(response, serverResponse);
       if (response.ok) {
         setUser(serverResponse);
         setIsLoading(false);

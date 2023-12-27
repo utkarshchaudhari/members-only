@@ -28,7 +28,6 @@ function NewMessageModal({ setNewMessageModal, setRefreshMessages }) {
         credentials: 'include',
       });
       const serverResponse = await response.json();
-      console.log(response, serverResponse);
       if (response.ok) {
         setSuccess(serverResponse);
         setRefreshMessages(serverResponse);

@@ -10,6 +10,9 @@ router.get('/', function (req, res, next) {
   res.send('Express');
 });
 
+//GET request for checking the authentication
+router.get('/check-auth', user_controller.user_check_auth);
+
 //POST request for creating user
 router.post('/signup', user_controller.user_create_post);
 
