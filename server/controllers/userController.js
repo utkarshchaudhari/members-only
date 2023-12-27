@@ -102,7 +102,6 @@ exports.user_login_post = [
     }
 
     passport.authenticate('local', (err, user, info) => {
-      console.log(err, user, info);
       if (err) {
         return next(err);
       }

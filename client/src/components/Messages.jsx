@@ -12,7 +12,6 @@ function Messages({ member, refreshMessages }) {
     const fetchData = async () => {
       const response = await fetch('http://localhost:3000/messages');
       const serverResponse = await response.json();
-      console.log(response, serverResponse);
       if (response.ok) {
         setMessages(serverResponse);
       }
