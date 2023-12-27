@@ -11,7 +11,7 @@ function SignupModal({ setSignupModal, user, setUser }) {
     password: '',
     cpassword: '',
   });
-  const [userError, setUserError] = useState(null);
+  const [userError, setUserError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [signupError, setSignupError] = useState(false);
 
@@ -54,6 +54,11 @@ function SignupModal({ setSignupModal, user, setUser }) {
         ) : user ? (
           <SuccessScreen
             message="Signed Up Successfully!"
+            closeModal={() => setSignupModal(false)}
+          />
+        ) : userError.err ? (
+          <ErrorScreen
+            message={userError.err}
             closeModal={() => setSignupModal(false)}
           />
         ) : signupError ? (
