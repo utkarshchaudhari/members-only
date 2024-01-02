@@ -255,6 +255,7 @@ textarea:focus {
 /* Pagination */
 
 .pagination {
+  list-style: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,7 +263,7 @@ textarea:focus {
   padding: 16px 24px;
 }
 
-.pagination > span {
+.page__item {
   cursor: pointer;
   border: 1px solid #e5e7eb;
   color: #6b7280;
@@ -271,7 +272,7 @@ textarea:focus {
   padding: 8px 16px;
 }
 
-.pagination > span:hover {
+.page__item:hover {
   background-color: #f9fafb;
 }
 
@@ -279,12 +280,13 @@ textarea:focus {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+
 .pagination__arrow-right {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-span.pagination__selected {
+.page__item-selected {
   color: #4f46e5;
   background-color: #eef2ff;
   border-color: #6365f1;
